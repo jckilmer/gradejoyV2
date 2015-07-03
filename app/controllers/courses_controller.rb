@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /courses
   def index
@@ -53,6 +54,6 @@ class CoursesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def course_params
-      params[:course]
+      params.require(:course).permit(:name, :time, :period, :user, :section)
     end
 end

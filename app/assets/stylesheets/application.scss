@@ -5,3 +5,92 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+html {
+  height: 100%;
+}
+
+body {
+  padding-top: 5em;
+  height: 100%;
+  /* MARDI GRAS THEME  background-color: #D1FFD1;*/
+}
+
+/* For profile pictures when the profile image feature is added
+img {
+  height:1.5em;
+  width: 1.5em;
+  margin: 1.1em 1em 1em 1em;
+
+}*/
+
+/* MARDI GRAS THEME
+.navbar {
+  background-color: #E6E6FF;
+}*/
+
+.navbar-brand {
+  font-size: 160%;
+  font-family: Impact, Charcoal, sans-serif;
+  padding: .7em;
+}
+
+.jumbotron {
+  text-align: center;
+  /* MARDI GRAS THEME  background-color: #FFFFC4;*/
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto 0em auto;
+  padding: 0 5% 15% 5%;
+}
+
+.container {
+  padding-right: 2%;
+  padding-left: 2%;
+}
+
+#footer {
+  height: 3em;
+  /* MARDI GRAS THEME  background-color: #E6E6FF;*/
+  background-color: #eeeeee;
+  text-align: center;
+  font-size: .75em;
+  padding-top: .7em;
+}
+
+.dropdown {
+  float: right;
+}
+
+h3 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.space-top-bottom {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.space-top {
+  margin-top: 25px;
+}
+
+.space-bottom {
+  margin-bottom: 25px;
+}
+
+.form-control-inline {
+    min-width: 20em;
+    width: auto;
+    display: inline;
+}
+
+textarea {
+  height: 20em;
+  width: 70%;
+}
