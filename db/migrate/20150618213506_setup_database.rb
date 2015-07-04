@@ -23,7 +23,7 @@ class SetupDatabase < ActiveRecord::Migration
     #courses table
     create_table :courses do |t|
       t.string :name, null: false
-      t.time :time
+      t.datetime :time
       t.string :period
       t.string :section
       t.integer :user_id, null: false, index: true

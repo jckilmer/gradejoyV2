@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
          :validatable,
          :confirmable,
          :lockable
+
+  has_many :courses
 end
