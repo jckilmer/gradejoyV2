@@ -1,18 +1,18 @@
 <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
+  <p class='alert alert-success'><%= notice %></p>
 <% end %>
 <% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
+  <p class='alert alert-danger'><%= alert %></p>
 <% end %>
-<% provide(:title, "Courses") %>
+<% provide(:title, 'Courses') %>
 
-<h2 class='space-bottom'>Gradebook</h2>
+<h2 class='space-bottom' id='qa-gradebook'>Gradebook</h2>
 <h4 class='space-bottom'>Current Courses</h4>
 
 <%= render 'courses_table' %>
 
-<div id="course_form"></div>
+<div id='course_form'></div>
 
-<%= link_to 'Create New Course', new_course_path, class: "btn btn-primary space-top", id: "create_course", remote: true %><br />
+<%= link_to 'Create New Course', new_course_path, class: 'btn btn-primary space-top', id: 'create_course', remote: true %><br />
 
-<%= link_to "Assignment Categories", '#', class: "btn btn-success space-top next-line" %> (Feature in progress)
+<%= link_to 'Assignment Categories', '#', class: 'btn btn-success space-top next-line' %> (Feature in progress)
