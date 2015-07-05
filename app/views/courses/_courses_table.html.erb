@@ -21,7 +21,7 @@
         <td><%= course.period %></td>
         <td><%= course.section %></td>
         <td><%= course.created_at.strftime("%A, %B %d, %Y, at %I:%M %p") %></td>
-        <td><%= course.students.all.count %></td>
+        <%#<%= course.students.all.count %><td></td>
       </tr>
       <% end %>
     </tbody>

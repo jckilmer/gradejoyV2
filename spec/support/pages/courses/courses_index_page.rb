@@ -5,6 +5,6 @@ class CourseIndexPage < Page
   end
 
   def has_course?(course)
-    has_css?("qa-course-#{course.id}")
+    has_css?(".qa-course-#{course.id}")
   end
 end
