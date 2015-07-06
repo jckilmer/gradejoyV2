@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
          :confirmable,
          :lockable
 
-  has_many :courses
+  has_many :courses, dependent: :destroy
+  has_many :help_requests, dependent: :destroy
 end

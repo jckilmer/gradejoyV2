@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618213506) do
+ActiveRecord::Schema.define(version: 20150705134601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150618213506) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name",       null: false
-    t.time     "time"
+    t.datetime "time"
     t.string   "period"
     t.string   "section"
     t.integer  "user_id",    null: false
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 20150618213506) do
   add_index "grades", ["points_earned"], name: "index_grades_on_points_earned", using: :btree
   add_index "grades", ["student_id"], name: "index_grades_on_student_id", using: :btree
   add_index "grades", ["user_id"], name: "index_grades_on_user_id", using: :btree
+
+  create_table "help_requests", force: :cascade do |t|
+    t.string   "email",      null: false
+    t.string   "message",    null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "help_requests", ["user_id"], name: "index_help_requests_on_user_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name",  null: false
@@ -99,8 +109,8 @@ ActiveRecord::Schema.define(version: 20150618213506) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -115,6 +125,7 @@ ActiveRecord::Schema.define(version: 20150618213506) do
   add_foreign_key "grades", "assignments"
   add_foreign_key "grades", "students"
   add_foreign_key "grades", "users"
+  add_foreign_key "help_requests", "users"
   add_foreign_key "students", "courses"
   add_foreign_key "students", "users"
 end

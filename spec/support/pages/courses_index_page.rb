@@ -1,6 +1,6 @@
 class CourseIndexPage < Page
   def visit_page
-    visit("/courses")
+    visit('/courses')
     self
   end
 
