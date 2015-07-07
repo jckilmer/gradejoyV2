@@ -9,7 +9,7 @@ RSpec.feature 'Creating help request', type: :feature do
       help_request_page.visit_page.fill_help_form(user.email, help_request.message)
       help_request_page.submit_help_form
       expect(help_email_sent_page).to have_email_sent_message
-      expect(last_email.from).to include(user.email)
+      expect(last_email.text_part.decoded).to match(help_request.email)
     end
   end
 end

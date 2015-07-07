@@ -4,9 +4,10 @@ class HelpRequestsController < ApplicationController
   end
 
   def create
-    @help_request = HelpRequest.new(help_request_params)
+    help_request = HelpRequest.new(help_request_params)
 
-    if @help_request.save
+    if help_request.save
+      HelpRequestMailer.new_request(help_request).deliver_later
       redirect_to help_email_sent_path
     else
       render :new
