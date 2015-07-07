@@ -6,9 +6,6 @@ class PagesController < ApplicationController
   def contact
   end
 
-  def help
-  end
-
   def privacy
   end
 
@@ -18,7 +15,7 @@ class PagesController < ApplicationController
   def communication
   end
 
-  def index
+  def home
   end
 
   def account
