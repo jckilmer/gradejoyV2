@@ -1,0 +1,4 @@
+$('#course_form').html("<%= j (render 'form') %>");
+$('#create_course').click(function(){
+  $('#course_form').toggle();
+});
