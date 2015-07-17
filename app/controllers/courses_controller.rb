@@ -1,10 +1,11 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  respond_to :html, :js, :json, :xml
 
   # GET /courses
   def index
-    @courses = Course.all
+    @courses = current_user.courses.all
   end
 
   # GET /courses/1
@@ -13,7 +14,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @course = current_user.courses.new
   end
 
   # GET /courses/1/edit
@@ -22,10 +23,10 @@ class CoursesController < ApplicationController
 
   # POST /courses
   def create
-    @course = Course.new(course_params)
-
+    @course = current_user.courses.new(course_params)
+    @courses = current_user.courses
     if @course.save
-      redirect_to @course, notice: 'Course was successfully created.'
+      respond_with(@courses, location: @course)
     else
       render :new
     end

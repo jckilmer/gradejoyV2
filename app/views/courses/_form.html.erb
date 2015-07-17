@@ -1,17 +1,35 @@
-<%= form_for(@course) do |f| %>
+<%= form_for @course, remote: true do |f| %>
   <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+    <div id='error_explanation'>
+      <h2><%= pluralize(@course.errors.count, 'error') %> prohibited this course from being saved:</h2>
 
       <ul>
-      <% @course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <% if current_page? new_course_path %>
+    <h3>Create New Course</h3>
+  <% else %>
+    <h3>Edit Course</h3>
+  <% end %>
+  <%= f.label :name %>(required)
+  <%= f.text_field :name, class: 'form-control form-control-inline space-top-bottom qa-course-name' %><br />
+
+  <%= f.label :time_of_day %>
+  <%= f.time_select :time, ampm: true, class: 'form-control form-control-inline space-bottom qa-course-time' %><br />
+
+  <%= f.label :period %>
+  <%= f.text_field :period, class: 'form-control form-control-inline space-top-bottom qa-course-period' %><br />
+
+  <%= f.label :section %>
+  <%= f.text_field :section, class: 'form-control form-control-inline space-bottom qa-course-section' %><br />
+
+  <div class='actions'>
+    <%= f.submit 'Submit', class:'btn btn-primary qa-submit-course' %>
   </div>
+
 <% end %>
