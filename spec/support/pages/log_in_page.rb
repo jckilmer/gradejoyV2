@@ -5,10 +5,10 @@ class LogInPage < Page
   end
 
   def log_in(user)
-    find('#qa-email').set(user.email)
-    find('#qa-password').set(user.password)
-    find('#qa-login-submit').click
-    find('#qa-gradebook')
+    find('.qa-email').set(user.email)
+    find('.qa-password').set(user.password)
+    find('.qa-login-submit').click
+    find('.qa-courses-header')
     self
   end
 end

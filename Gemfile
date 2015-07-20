@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'puma'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug'
@@ -33,6 +34,7 @@ end
 
 group :development do
   gem 'license_finder'
+  gem 'bullet'
 end
 
 group :production do

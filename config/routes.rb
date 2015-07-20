@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :courses
 
   get 'help',             to: 'help_requests#new'
-  post 'help_requests',            to: 'help_requests#create'
+  post 'help_requests',   to: 'help_requests#create'
   get 'help_email_sent',  to: 'help_requests#help_email_sent'
 
   get 'about',            to: 'pages#about'
