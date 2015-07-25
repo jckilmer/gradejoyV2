@@ -15,21 +15,8 @@
 
 <%= render 'main_table' %>
 
-<div id="updated-main-table"></div>
+<%= link_to "Create New Assignment", new_course_assignment_path(@course), class: "btn btn-warning qa-create-assignment space-top-bottom qa-create-assignment", remote: true %><br />
 
-<div id="student-buttons"></div>
-<br />
-<div id="edit-student-form"></div>
+<div id="create-assignment-form"></div>
 
-<div id="edit-course-assignment-form"></div>
-
-<div id="create-course-assignment-form"></div>
-
-<div id="enroll-form"></div>
-
-<div id="edit-grade-form"></div>
-
-<div id="add-grade-form"></div>
-
-<br />
-<%= link_to 'Back to Courses List', courses_path, class: "btn btn-primary qa-back-to-courses-list" %>
+<%= link_to 'Back to Courses List', courses_path, class: "btn btn-primary qa-back-to-courses-list space-top" %>

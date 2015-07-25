@@ -3,7 +3,8 @@ class AssignmentPolicy < ApplicationPolicy
     has_user?
   end
 
-  alias_method :create?, :show?
-  alias_method :update?, :show?
-  alias_method :destroy?, :show?
+  alias_method :show?, :new?
+  alias_method :create?, :new?
+  alias_method :update?, :new?
+  alias_method :destroy?, :new?
 end

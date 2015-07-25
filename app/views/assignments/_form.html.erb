@@ -1,0 +1,37 @@
+<%= form_for([@course, @assignment]) do |f| %>
+  <% if @assignment.errors.any? %>
+    <div id='error_explanation'>
+      <h2><%= pluralize(@assignment.errors.count, 'error') %> prohibited this assignment from being saved:</h2>
+
+      <ul>
+      <% @assignment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if current_page? new_course_assignment_path %>
+    <h3>Create New Assignment</h3>
+  <% else %>
+    <h3>Edit <%= @assignment.name %></h3>
+  <% end %>
+
+  <%= f.label :name %> (required)
+  <%= f.text_field :name, class: 'form-control form-control-inline qa-assignment-name' %><br /><br />
+
+  <%= f.label :date_due %>
+  <%= f.datetime_select :date_due, start_year: DateTime.current.year, end_year: 2015, ampm: true %><br /><br />
+
+  <%= f.label :category %>
+  <%= f.text_field :category, class: 'form-control form-control-inline qa-assignment-category' %><br /><br />
+
+  <%= f.label :total_points %>
+  <%= f.number_field :total_points, class: 'form-control form-control-inline qa-assignment-total-points' %><br /><br />
+
+  <%= f.text_field :course_id, value: @course.id, readonly: true, class: 'none' %>
+
+  <div class='actions'>
+      <%= f.submit 'Submit', class:'btn btn-primary qa-submit-assignment' %>
+  </div>
+<% end %>

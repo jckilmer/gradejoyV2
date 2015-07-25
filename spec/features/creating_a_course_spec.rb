@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Creating a course', type: :feature, js: true do
   context 'with valid attributes' do
-    let!(:course) { create(:course) }
+    let!(:course) { attributes_for(:course) }
     let!(:user) { create(:user) }
 
     it 'creates a course' do

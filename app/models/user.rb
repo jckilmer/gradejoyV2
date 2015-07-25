@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
          :lockable
 
   has_many :courses, dependent: :destroy
+  has_many :assignments, dependent: :destroy
   has_many :help_requests, dependent: :destroy
 end

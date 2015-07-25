@@ -1,0 +1,4 @@
+$('#create-assignment-form').html("<%= j (render 'form') %>");
+$('.create-assignment').click(function(){
+  $('#create-assignment-form').toggle();
+});

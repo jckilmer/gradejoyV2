@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :courses
+  resources :courses do
+    resources :assignments, except: :index
+  end
+
 
   get 'help',             to: 'help_requests#new'
   post 'help_requests',   to: 'help_requests#create'
