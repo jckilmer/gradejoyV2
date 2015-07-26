@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to @course.name, @course %></td>
+  <td><%= link_to @course.name, @course, class: "qa-course-#{@course.id}" %></td>
   <td><%= @course.id %></td>
   <td><%= @course.time.strftime("%I:%M %p") %></td>
   <td><%= @course.period %></td>

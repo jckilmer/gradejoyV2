@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :assignment do
-    name "Latin"
+    name "Test 1"
     date_due { Faker::Time.between(DateTime.now - 1, DateTime.now) }
     category "Tests"
     points_earned { Faker::Number.number(2) }

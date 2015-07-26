@@ -29,4 +29,8 @@ class CoursePage < Page
     find('.qa-assignment-total-points').set(attributes[:total_points])
     find('.qa-submit-assignment').click
   end
+
+  def has_assignment?(assignment)
+    has_css?(".qa-assignment-#{assignment.id}")
+  end
 end

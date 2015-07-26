@@ -1,3 +1,4 @@
+<% if Rails.env.production? %>
 // Create a queue, but don't obliterate an existing one!
 window.analytics = window.analytics || [];
 
@@ -69,3 +70,4 @@ $(document).on('ready page:change', function() {
   console.log('page loaded');
   analytics.page();
 })
+<% end %>
