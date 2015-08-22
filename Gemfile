@@ -15,7 +15,6 @@ gem 'pundit'
 group :development, :test do
   gem 'byebug'
   gem 'web-console'
-  gem 'spring'
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
