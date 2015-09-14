@@ -70,12 +70,9 @@ ActiveRecord::Schema.define(version: 20150705134601) do
   create_table "help_requests", force: :cascade do |t|
     t.string   "email",      null: false
     t.string   "message",    null: false
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "help_requests", ["user_id"], name: "index_help_requests_on_user_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name",  null: false
@@ -125,7 +122,6 @@ ActiveRecord::Schema.define(version: 20150705134601) do
   add_foreign_key "grades", "assignments"
   add_foreign_key "grades", "students"
   add_foreign_key "grades", "users"
-  add_foreign_key "help_requests", "users"
   add_foreign_key "students", "courses"
   add_foreign_key "students", "users"
 end

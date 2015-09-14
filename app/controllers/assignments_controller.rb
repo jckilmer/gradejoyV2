@@ -1,20 +1,24 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def show
     authorize(@assignment)
   end
 
+  def edit
+    @course = current_user.courses.find(params[:course_id])
+  end
+
   def new
-    @course = Course.find(params[:course_id])
+    @course = current_user.courses.find(params[:course_id])
     @assignment = current_user.assignments.new
     @assignment.course_id = @course.id
     authorize(@assignment)
   end
 
   def create
-    @course = Course.find(params[:course_id])
     @assignment = current_user.assignments.new(assignment_params)
     authorize(@assignment)
     if @assignment.save
@@ -26,10 +30,17 @@ class AssignmentsController < ApplicationController
 
   def update
     authorize(@assignment)
+    if @assignment.update(assignment_params)
+      redirect_to @course
+    else
+      render :edit
+    end
   end
 
   def destroy
     authorize(@assignment)
+    @assignment.destroy
+    redirect_to :back
   end
 
   private
@@ -39,6 +50,10 @@ class AssignmentsController < ApplicationController
   end
 
   def set_assignment
-    @assignment = Assignment.find(params[:id])
+    @assignment = current_user.assignments.find(params[:id])
+  end
+
+  def set_course
+    @course = current_user.courses.find(params[:course_id])
   end
 end

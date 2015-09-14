@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
-ruby '2.2.2'
+ruby '2.2.3'
 
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.4'
 gem 'pg'
 gem 'sass-rails'
+gem 'bootstrap-sass'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'puma'
-gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
 
