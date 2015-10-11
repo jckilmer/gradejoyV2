@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get 'privacy',          to: 'pages#privacy'
   get 'terms',            to: 'pages#terms'
   get 'account',          to: 'pages#account'
-  get 'communication',    to: 'pages#communication'
   get '/robots.:format',  to: 'pages#robots'
 
   root 'pages#home'
