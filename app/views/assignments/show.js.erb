@@ -1,4 +1,4 @@
-var assignmentId = "#assignment-id-<%= j @assignment.id.to_s %>"
+var assignmentId = "#assignment-<%= j @assignment.id.to_s %>"
 var assignmentButtonsId = ".assignment-buttons-<%= j @assignment.id.to_s %>"
 
 $(assignmentButtonsId).html("<%= j (render 'assignment_buttons') %>");

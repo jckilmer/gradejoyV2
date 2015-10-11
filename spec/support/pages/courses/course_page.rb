@@ -1,7 +1,6 @@
 class CoursePage < Page
   def visit_page(course)
     visit("/courses/#{course.id}")
-    self
   end
 
   def press_edit_course_button
@@ -32,5 +31,25 @@ class CoursePage < Page
 
   def has_assignment?(assignment)
     has_css?(".qa-assignment-#{assignment.id}")
+  end
+
+  def has_no_assignment?(assignment)
+    has_no_css?(".qa-assignment-#{assignment.id}")
+  end
+
+  def navigate_to_edit_assignment_page(assignment)
+    find(".qa-assignment-#{assignment.id}").click
+    within("#assignment-#{assignment.id}") do
+      find(".qa-edit-assignment").click
+    end
+  end
+
+  def delete_assignment(assignment)
+    accept_confirm do
+      find(".qa-assignment-#{assignment.id}").click
+      within("#assignment-#{assignment.id}") do
+        find(".qa-delete").click
+      end
+    end
   end
 end

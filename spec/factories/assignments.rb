@@ -5,6 +5,7 @@ FactoryGirl.define do
     category "Tests"
     points_earned { Faker::Number.number(2) }
     total_points 100
+    course
     user
   end
 end
