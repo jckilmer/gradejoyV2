@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'puma'
 gem 'devise'
 gem 'pundit'
+gem 'rollbar'
 
 group :development, :test do
   gem 'byebug'
@@ -38,5 +39,4 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'rollbar'
 end
