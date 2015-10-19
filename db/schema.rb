@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705134601) do
+ActiveRecord::Schema.define(version: 20151018235725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,16 +19,15 @@ ActiveRecord::Schema.define(version: 20150705134601) do
   create_table "assignments", force: :cascade do |t|
     t.string   "name",          null: false
     t.datetime "date_due"
-    t.string   "category"
     t.decimal  "points_earned"
     t.decimal  "total_points"
-    t.integer  "course_id"
     t.integer  "user_id",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
 
-  add_index "assignments", ["course_id"], name: "index_assignments_on_course_id", using: :btree
+  add_index "assignments", ["category_id"], name: "index_assignments_on_category_id", using: :btree
   add_index "assignments", ["user_id"], name: "index_assignments_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
@@ -40,6 +39,32 @@ ActiveRecord::Schema.define(version: 20150705134601) do
   end
 
   add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
+
+  create_table "course_assignments", force: :cascade do |t|
+    t.integer  "course_id",     null: false
+    t.integer  "assignment_id", null: false
+    t.integer  "user_id",       null: false
+    t.datetime "archived_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "course_assignments", ["assignment_id"], name: "index_course_assignments_on_assignment_id", using: :btree
+  add_index "course_assignments", ["course_id"], name: "index_course_assignments_on_course_id", using: :btree
+  add_index "course_assignments", ["user_id"], name: "index_course_assignments_on_user_id", using: :btree
+
+  create_table "course_enrollments", force: :cascade do |t|
+    t.integer  "course_id",   null: false
+    t.integer  "student_id",  null: false
+    t.integer  "user_id",     null: false
+    t.boolean  "archived_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "course_enrollments", ["course_id"], name: "index_course_enrollments_on_course_id", using: :btree
+  add_index "course_enrollments", ["student_id"], name: "index_course_enrollments_on_student_id", using: :btree
+  add_index "course_enrollments", ["user_id"], name: "index_course_enrollments_on_user_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.string   "name",       null: false
@@ -79,13 +104,11 @@ ActiveRecord::Schema.define(version: 20150705134601) do
     t.string   "last_name",   null: false
     t.date     "birth_date"
     t.string   "grade_level"
-    t.integer  "course_id"
     t.integer  "user_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "students", ["course_id"], name: "index_students_on_course_id", using: :btree
   add_index "students", ["user_id"], name: "index_students_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -115,13 +138,16 @@ ActiveRecord::Schema.define(version: 20150705134601) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
-  add_foreign_key "assignments", "courses"
+  add_foreign_key "assignments", "categories"
   add_foreign_key "assignments", "users"
   add_foreign_key "categories", "users"
+  add_foreign_key "course_assignments", "assignments"
+  add_foreign_key "course_assignments", "courses"
+  add_foreign_key "course_enrollments", "courses"
+  add_foreign_key "course_enrollments", "students"
   add_foreign_key "courses", "users"
   add_foreign_key "grades", "assignments"
   add_foreign_key "grades", "students"
   add_foreign_key "grades", "users"
-  add_foreign_key "students", "courses"
   add_foreign_key "students", "users"
 end
