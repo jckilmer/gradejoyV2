@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @courses = CoursePolicy::Scope.new(current_user, Course).resolve
+    @courses = current_user.courses
   end
 
   def show
